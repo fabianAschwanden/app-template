@@ -11,7 +11,7 @@ ein Deployable (BFF), Quarkus + Angular via Quinoa, Hexagonal + DDD, erzwungen p
 | Backend | Java 25, Quarkus (REST, Hibernate/Panache, Liquibase, OIDC) |
 | Frontend | Angular (standalone, Signals), TypeScript strict, TailwindCSS 4 |
 | Datenbank | PostgreSQL (Dev/Test automatisch via Dev Services) |
-| Tests | JUnit 5, Mockito, @QuarkusTest/REST-assured, ArchUnit, Vitest, Playwright, JaCoCo-Gate |
+| Tests & Qualität | JUnit 5, Mockito, @QuarkusTest/REST-assured, ArchUnit, Vitest, Playwright, JaCoCo-Gate, ESLint |
 | Delivery | GitHub Actions, Container-Image (Podman), GitOps-ready, Dependabot |
 
 ## Neue App erstellen
@@ -39,6 +39,7 @@ ein Deployable (BFF), Quarkus + Angular via Quinoa, Hexagonal + DDD, erzwungen p
 ```bash
 ./mvnw verify                  # Backend-Tests, ArchUnit, Coverage-Gate, Frontend-Build
 cd webapp && npm test          # Frontend-Unit-Tests (Vitest)
+cd webapp && npm run lint      # ESLint (Frontend-Konventionen als Lint-Baseline)
 cd webapp && npm run e2e       # Playwright gegen laufende Instanz (E2E_BASE_URL)
 ```
 
@@ -67,5 +68,6 @@ der Build (`HexagonalArchitectureTest`).
 
 ## Bewusst nicht enthalten
 
-Kafka/Messaging, S3/Object-Storage, Scheduler, Cucumber/BDD-Runner: gemäss Blueprint (KISS)
-erst hinzufügen, wenn ein echter Use Case sie braucht — die Konventionen dafür stehen im Blueprint.
+Kafka/Messaging, S3/Object-Storage, Scheduler, Cucumber/BDD-Runner sowie der Real-OIDC-Smoke-Test
+(`quarkus-test-keycloak-server`): gemäss Blueprint (KISS) erst hinzufügen, wenn ein echter
+Use Case sie braucht — die Konventionen dafür stehen im Blueprint.

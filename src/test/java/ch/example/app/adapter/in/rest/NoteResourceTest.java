@@ -7,6 +7,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -22,6 +23,7 @@ class NoteResourceTest {
                 .body(Map.of("title", "Erste Note", "body", "Hallo"))
                 .when().post("/api/notes")
                 .then().statusCode(201)
+                .header("Location", containsString("/api/notes/"))
                 .body("id", notNullValue())
                 .extract().path("id");
 

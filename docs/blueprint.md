@@ -40,6 +40,7 @@ Eine einzelne Maven-Modul-Einheit enthält Backend und Frontend. Das Quarkus-Bac
 | Styling | TailwindCSS (+ `@tailwindcss/postcss`) | 4.x |
 | Reaktivität | RxJS (nur an REST-/Stream-Grenzen) | 7.8.x |
 | Build | `@angular/build` (esbuild-basiert) | 21.x |
+| Linting | ESLint (`angular-eslint` + `typescript-eslint`) — erzwingt die Frontend-Konventionen (§5) | — |
 | Formatierung | Prettier (print width 100, single quotes) + EditorConfig | — |
 
 Plain SPA, keine PWA.

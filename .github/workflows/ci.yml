@@ -27,7 +27,7 @@ jobs:
         run: ./mvnw -B verify
 
   frontend:
-    name: Frontend (Vitest, Prettier-Check)
+    name: Frontend (Vitest, ESLint, Prettier-Check)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,6 +41,7 @@ jobs:
           cache-dependency-path: webapp/package-lock.json
       - run: npm ci
       - run: npm run format:check
+      - run: npm run lint
       - run: npm test -- --watch=false
 
   # E2E (Playwright gegen das gebaute Artefakt) bewusst als eigener, nicht-blockierender Job.

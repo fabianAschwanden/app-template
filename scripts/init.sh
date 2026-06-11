@@ -17,13 +17,18 @@ echo "App-Name:     $OLD_NAME -> $APP_NAME"
 echo "Base-Package: $OLD_PACKAGE -> $BASE_PACKAGE"
 
 # 1) Java-Quellen in neue Paketstruktur verschieben
+#    Über ein Temp-Verzeichnis, damit sich alter und neuer Paketpfad überlappen dürfen
+#    (z.B. ch.example.app -> ch.css.psp teilen sich die Wurzel "ch").
 OLD_PATH="${OLD_PACKAGE//.//}"
 NEW_PATH="${BASE_PACKAGE//.//}"
 for SRC_ROOT in src/main/java src/test/java; do
+  TMP_DIR="$(mktemp -d)"
+  cp -R "$SRC_ROOT/$OLD_PATH/." "$TMP_DIR/"
+  rm -rf "$SRC_ROOT/$OLD_PATH"
+  find "$SRC_ROOT" -mindepth 1 -type d -empty -delete
   mkdir -p "$SRC_ROOT/$NEW_PATH"
-  cp -R "$SRC_ROOT/$OLD_PATH/." "$SRC_ROOT/$NEW_PATH/"
-  # alte Wurzel entfernen (nur die Segmente des alten Pakets)
-  rm -rf "$SRC_ROOT/${OLD_PATH%%/*}"
+  cp -R "$TMP_DIR/." "$SRC_ROOT/$NEW_PATH/"
+  rm -rf "$TMP_DIR"
 done
 
 # 2) Referenzen ersetzen (Paket, Artefakt-/App-Name)

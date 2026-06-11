@@ -12,7 +12,8 @@ webapp/playwright-report/
 # IDE
 .idea/
 *.iml
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .settings/
 .project
 .classpath

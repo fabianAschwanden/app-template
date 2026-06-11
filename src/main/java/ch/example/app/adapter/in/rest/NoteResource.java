@@ -12,8 +12,10 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,8 +45,9 @@ public class NoteResource {
     }
 
     @POST
-    public Response create(@Valid CreateNoteRequest request) {
+    public Response create(@Valid CreateNoteRequest request, @Context UriInfo uriInfo) {
         var note = createNote.create(request.title(), request.body());
-        return Response.status(Response.Status.CREATED).entity(NoteDto.from(note)).build();
+        var location = uriInfo.getAbsolutePathBuilder().path(note.id().toString()).build();
+        return Response.created(location).entity(NoteDto.from(note)).build();
     }
 }
