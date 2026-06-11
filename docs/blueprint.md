@@ -35,11 +35,11 @@ Eine einzelne Maven-Modul-Einheit enthält Backend und Frontend. Das Quarkus-Bac
 
 | Bereich | Wahl | Version |
 |---|---|---|
-| Framework | Angular (standalone, Signals) | 21.x |
-| Sprache | TypeScript (strict) | 5.9.x |
+| Framework | Angular (standalone, Signals) | 22.x |
+| Sprache | TypeScript (strict) | 6.0.x |
 | Styling | TailwindCSS (+ `@tailwindcss/postcss`) | 4.x |
 | Reaktivität | RxJS (nur an REST-/Stream-Grenzen) | 7.8.x |
-| Build | `@angular/build` (esbuild-basiert) | 21.x |
+| Build | `@angular/build` (esbuild-basiert) | 22.x |
 | Linting | ESLint (`angular-eslint` + `typescript-eslint`) — erzwingt die Frontend-Konventionen (§5) | — |
 | Formatierung | Prettier (print width 100, single quotes) + EditorConfig | — |
 
