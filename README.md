@@ -52,6 +52,7 @@ src/main/resources/db/changelog/ # Liquibase — besitzt das Schema, append-only
 webapp/src/app/core/             # models (spiegeln REST-DTOs) + services
 webapp/src/app/features/         # UI-Komponenten je Route
 docs/blueprint.md                # der Blueprint, den dieses Template umsetzt
+.claude/skills/                  # Claude-Skills (Engineering-Workflows + css-template)
 ```
 
 Die Abhängigkeitsregel `adapter → application → domain` und weitere Invarianten bricht
