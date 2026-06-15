@@ -97,10 +97,10 @@
       <version>${quinoa.version}</version>
     </dependency>
 
-    <!-- Container-Image (Release-Pipeline) -->
+    <!-- Container-Image: docker (kompatibel mit Fly.io CI und lokal) -->
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-container-image-podman</artifactId>
+      <artifactId>quarkus-container-image-docker</artifactId>
     </dependency>
 
     <!-- Test -->
