@@ -1,6 +1,6 @@
 # Blueprint — Technologie-Stack & Architektur-Prinzipien
 
-**Verbindliche Vorgabe für alle Apps aus diesem Template.** Beschreibt *wie* gebaut wird (Stack, Schichten, Regeln, Konventionen), nicht *was* fachlich gebaut wird. Versionen sind ein Snapshot (Stand 2026-06); beim Aufsetzen auf die jeweils aktuelle LTS/stabile Version heben und hier dokumentieren.
+**Verbindliche Vorgabe für alle Apps aus diesem Template** (fabianAschwanden/app-template). Beschreibt *wie* gebaut wird (Stack, Schichten, Regeln, Konventionen), nicht *was* fachlich gebaut wird. Versionen sind ein Snapshot (Stand 2026-06); beim Aufsetzen auf die jeweils aktuelle LTS/stabile Version heben und hier dokumentieren.
 
 ## 1. Deployment-Form: ein Backend-for-Frontend (BFF), ein Deployable
 

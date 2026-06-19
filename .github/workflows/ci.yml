@@ -9,7 +9,6 @@ on:
 jobs:
   backend:
     name: Backend (mvn verify, inkl. Frontend-Build via Quinoa)
-    # TODO Unternehmenskontext: auf self-hosted Runner (ARC) umstellen.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

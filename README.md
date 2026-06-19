@@ -1,7 +1,7 @@
 # app-template
 
 Lauffähiges Gerüst für neue Applikationen — **ohne fachlichen Inhalt**. Setzt den
-Unternehmens-Blueprint ([docs/blueprint.md](docs/blueprint.md)) als Code um:
+[Blueprint](docs/blueprint.md) als Code um:
 ein Deployable (BFF), Quarkus + Angular via Quinoa, Hexagonal + DDD, erzwungen per ArchUnit.
 
 ## Stack
@@ -22,7 +22,7 @@ ein Deployable (BFF), Quarkus + Angular via Quinoa, Hexagonal + DDD, erzwungen p
    falls noch nicht: Settings → General → „Template repository" aktivieren).
 2. Im neuen Repo App-Namen und Basis-Paket setzen:
    ```bash
-   ./scripts/init.sh meine-app ch.meinefirma.meineapp
+   ./scripts/init.sh my-app io.github.fabianaschwanden.myapp
    ```
 3. Beispiel-Durchstich **Note** durch echte Fachlichkeit ersetzen (Suche nach `Note`).
    Er existiert nur als Referenz: Domäne → Ports → Application Service → REST → Liquibase → Angular-Feature.
@@ -33,16 +33,16 @@ ein Deployable (BFF), Quarkus + Angular via Quinoa, Hexagonal + DDD, erzwungen p
 ```bash
 # Neon: https://neon.tech → neues Projekt → Connection string kopieren
 
-flyctl apps create meine-app          # App auf Fly.io registrieren
+flyctl apps create my-app             # App auf Fly.io registrieren
 flyctl secrets set \
   DB_URL='jdbc:postgresql://<host>.neon.tech/<db>?sslmode=require' \
   OIDC_AUTH_SERVER_URL='https://<idp>/realms/<realm>' \
-  OIDC_CLIENT_ID='meine-app' \
+  OIDC_CLIENT_ID='my-app' \
   OIDC_CLIENT_SECRET='<secret>' \
-  --app meine-app
+  --app my-app
 
 # Deploy-Token als GitHub-Secret hinterlegen:
-flyctl tokens create deploy -a meine-app
+flyctl tokens create deploy -a my-app
 # → GitHub Repo → Settings → Secrets → New secret: FLY_API_TOKEN
 
 git tag v0.1.0 && git push --tags     # Löst das erste Deployment aus

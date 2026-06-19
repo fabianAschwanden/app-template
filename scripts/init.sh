@@ -2,13 +2,13 @@
 # Initialisiert eine neue App aus diesem Template:
 #   ./scripts/init.sh <app-name> <base-package>
 # Beispiel:
-#   ./scripts/init.sh psp ch.css.psp
+#   ./scripts/init.sh my-app io.github.fabianaschwanden.myapp
 set -euo pipefail
 
-APP_NAME="${1:?Usage: ./scripts/init.sh <app-name> <base-package>  (z.B. psp ch.css.psp)}"
-BASE_PACKAGE="${2:?Usage: ./scripts/init.sh <app-name> <base-package>  (z.B. psp ch.css.psp)}"
+APP_NAME="${1:?Usage: ./scripts/init.sh <app-name> <base-package>  (z.B. my-app io.github.fabianaschwanden.myapp)}"
+BASE_PACKAGE="${2:?Usage: ./scripts/init.sh <app-name> <base-package>  (z.B. my-app io.github.fabianaschwanden.myapp)}"
 
-OLD_PACKAGE="ch.example.app"
+OLD_PACKAGE="io.github.fabianaschwanden.app"
 OLD_NAME="app-template"
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT_DIR"
@@ -17,8 +17,7 @@ echo "App-Name:     $OLD_NAME -> $APP_NAME"
 echo "Base-Package: $OLD_PACKAGE -> $BASE_PACKAGE"
 
 # 1) Java-Quellen in neue Paketstruktur verschieben
-#    Über ein Temp-Verzeichnis, damit sich alter und neuer Paketpfad überlappen dürfen
-#    (z.B. ch.example.app -> ch.css.psp teilen sich die Wurzel "ch").
+#    Über ein Temp-Verzeichnis, damit sich alter und neuer Paketpfad überlappen dürfen.
 OLD_PATH="${OLD_PACKAGE//.//}"
 NEW_PATH="${BASE_PACKAGE//.//}"
 for SRC_ROOT in src/main/java src/test/java; do
@@ -38,7 +37,7 @@ grep -rl --exclude-dir=node_modules --exclude-dir=target --exclude-dir=.git "$OL
 grep -rl --exclude-dir=node_modules --exclude-dir=target --exclude-dir=.git "$OLD_NAME" . \
   | grep -v 'scripts/init.sh' \
   | xargs sed -i.bak "s/$OLD_NAME/$APP_NAME/g"
-sed -i.bak "s|<groupId>ch.example</groupId>|<groupId>$GROUP_ID</groupId>|" pom.xml
+sed -i.bak "s|<groupId>io.github.fabianaschwanden</groupId>|<groupId>$GROUP_ID</groupId>|" pom.xml
 find . -name '*.bak' -not -path './node_modules/*' -delete
 
 echo
